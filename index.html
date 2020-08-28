@@ -1,0 +1,412 @@
+<DOCTYPE html>
+<html>
+<head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+    <script>
+        // Function that builds a grid in the "container"
+        function createGrid(x) {
+  
+          var mq1= window.matchMedia( "(max-width: 400px)" );
+    var mq2= window.matchMedia( "(min-width: 400px)" );
+    var mq3= window.matchMedia( "(min-width: 600px)" );
+    var mq4= window.matchMedia( "(min-width: 810px)" );
+    var mq5= window.matchMedia( "(min-width: 1010px)" );
+    
+    for (var rows = 0; rows < x; rows++) {
+        for (var columns = 0; columns < x; columns++) {
+            $("#container").append("<div class='grid'id='gridcell'></div>");
+        
+        };
+    };
+
+    if (mq1.matches) {
+    $(".grid").width(275/x);
+    $(".grid").height(275/x);
+    };
+
+     if (mq2.matches) {
+    // window width is at less than 570px
+   $(".grid").width(350/x);
+    $(".grid").height(350/x);
+ 
+};
+if (mq3.matches) {
+    // window width is at less than 570px
+    $(".grid").width(480/x);
+    $(".grid").height(480/x);
+
+};
+if (mq4.matches) {
+    // window width is at less than 570px
+    $(".grid").width(690/x);
+    $(".grid").height(690/x);
+};
+ if (mq5.matches) {
+    // window width is at less than 570px
+    $(".grid").width(900/x);
+    $(".grid").height(900/x);
+};
+        
+};
+// Function that clears the grid
+function clearGrid(){
+    $(".grid").remove();
+};
+
+
+
+// Function that prompts the user to select the number of boxes in a new grid
+// the function then also creates that new grid
+function refreshGrid(){
+    var z = prompt("How many boxes per side?");
+    clearGrid();
+    createGrid(z);
+};
+function callColour(){
+
+  
+
+$("#btn1").click(function(){
+  $(".grid").click(function(){
+    $(this).css("background-color","gray");
+  });
+});
+
+$("#btn2").click(function(){
+  $(".grid").click(function(){
+    $(this).css("background-color","rgb(229, 232, 236)");
+  });
+});
+
+$("#btn3").click(function(){
+  $(".grid").click(function(){
+    $(this).css("background-color","rgb(46, 107, 143)");
+  });
+});
+};
+
+function colorhide(){
+  $("#btnhold").hide();
+};
+
+function colorshow(){
+  
+  $("#btnhold").show();
+};
+
+
+
+
+$("document").ready(function(){
+  document.addEventListener("DOMContentloaded",createGrid(16));
+  colorhide();
+  $(".newGrid").click(function(){
+    refreshGrid();
+    colorhide();
+    document.getElementById("btn1").style.background="transparent";
+    document.getElementById("btn2").style.background="transparent";
+    document.getElementById("btn3").style.background="transparent";
+    document.getElementById("btn2").style.color="whitesmoke";
+  });
+ 
+
+  $("#colour").click(function(){
+    callColour();
+    colorshow();
+    document.getElementById("btn1").style.color="whitesmoke";
+  });
+
+  $("#btn1").click(function(){
+    document.getElementById("btn1").style.background="gray";
+    document.getElementById("btn2").style.background="transparent";
+    document.getElementById("btn3").style.background="transparent";
+    document.getElementById("btn2").style.color="white";
+    document.getElementById("btn1").style.color="black";
+  });
+  $("#btn2").click(function(){
+    document.getElementById("btn2").style.background="rgb(229, 232, 236)";
+    document.getElementById("btn2").style.color="black";
+    document.getElementById("btn1").style.background="transparent";
+    document.getElementById("btn3").style.background="transparent";
+    document.getElementById("btn1").style.color="whitesmoke";
+  });
+  $("#btn3").click(function(){
+    document.getElementById("btn3").style.background="rgb(46, 107, 143)";
+    document.getElementById("btn3").style.color="black";
+    document.getElementById("btn1").style.background="transparent";
+    document.getElementById("btn2").style.background="transparent";
+    document.getElementById("btn2").style.color="white";
+    document.getElementById("btn1").style.color="whitesmoke";
+  });
+ 
+});
+
+
+    </script>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+background-image: url('https://images.pexels.com/photos/604684/pexels-photo-604684.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+background-repeat: no-repeat; background-size: cover;background-attachment: scroll;
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+      }
+
+      @media(max-width: 400px) {
+          
+      
+          #container {
+
+     outline: 2px solid rgb(255, 252, 252);
+     font-size: 0;
+     margin: auto;
+     height: 275px;
+    width: 275px;
+     padding: 0;
+     border: none;
+ }
+ 
+li{
+  width: 70px;font-size: small;padding: 10px 30px;
+}
+.newGridbtn{
+  font-size: large;
+}
+#btn1:hover{
+border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn2:hover{
+border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn3:hover{
+border-bottom: 1px solid whitesmoke;text-align: center;
+}
+      }
+      @media(min-width: 400px) {
+          
+      
+          #container {
+     
+     outline: 2px solid rgb(255, 252, 252);
+     font-size: 0;
+     margin: auto;
+     height: 350px;
+    width: 350px;
+     padding: 0;margin-bottom: 10px;
+     border: none;
+ }
+      }
+li{
+  padding: 10px 30px;font-size: small;
+}
+.newGridbtn{
+  font-size: large;
+}
+#btn1:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn2:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn3:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+
+      @media(min-width: 600px) {
+          
+      
+         #container {
+   
+    outline: 2px solid rgb(46, 107, 143);
+    font-size: 0;
+    margin: auto;
+    height: 480px;
+   width: 480px;
+    padding: 0;margin-bottom: 10px;
+    border: none;
+}
+.btn{
+  padding: 10px 20px;
+}
+.newGridbtn{
+  font-size: large;
+}
+#btn1:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn2:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn3:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+      }
+      @media(min-width: 810px) {
+          
+      
+          #container {
+    
+     outline: 2px solid rgb(255, 252, 252);
+     font-size: 0;
+     margin: auto;
+     height: 690px;
+    width: 690px;
+     padding: 0;margin-bottom: 10px;
+     border-bottom: 2px solid rgb(255, 252, 252);
+ }
+ li{
+   padding: 10px 20px;
+ }
+ .newGridbtn{
+  font-size: large;
+}
+#btn1:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn2:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn3:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+       }
+       @media(min-width: 1010px) {
+          
+      
+          #container {
+
+     outline: 2px solid rgb(255, 252, 252);
+     font-size: 0;
+     margin: auto;
+     height: 900px;
+    width: 900px;
+     padding: 0;
+     border: none;
+     margin-bottom: 10px;
+ }
+ li{
+   padding: 10px 20px;
+ }
+ .newGridbtn{
+   font-size: xx-large;
+ }
+ #btn1:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn2:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+#btn3:hover{
+font-size: x-large;border-bottom: 1px solid whitesmoke;text-align: center;
+}
+       }
+
+       .btn{
+  border: none;text-align: center;text-decoration: none;background-color:transparent;width: 90px;cursor: pointer;
+  box-sizing: border-box;font-size: large;
+ 
+ 
+}
+
+}
+
+#btn1{
+  color: whitesmoke;font-size: large;
+    transition-property: font-size;
+  transition-duration: 0.2s;
+}
+#btn2{
+color: whitesmoke;font-size: large;
+    transition-property: font-size;
+  transition-duration: 0.2s;
+}
+#btn3{
+  color: whitesmoke;font-size: large;
+    transition-property: font-size;
+  transition-duration: 0.2s;
+}
+#colour{
+  font-size: large;padding: 10px;border: 1px solid whitesmoke;text-align: center;text-decoration: none;
+  background-color:transparent;width: 190px;color: whitesmoke;position: relative;
+  transition-property: background-color;
+  transition: 0.4s;
+
+}
+#colour:hover{
+  background-image: linear-gradient(to left,rgb(129, 169, 192) 20%, #080c0e 80%);
+}
+
+.grid {
+    
+    padding: 0;
+    border: none;
+    outline: 1px solid rgb(240, 238, 238);
+    display: inline-block;
+    
+}
+.newGrid{
+width: 75px;height: 75px;background-color: aliceblue;margin-top: 10px;position: relative;cursor: pointer;
+animation: leftright 2s linear infinite;
+ }
+ @keyframes leftright{
+from {padding-left: 10px;}
+to{padding-right: 10px;}
+
+ }
+.newGridbtn{
+position: relative;
+  color: whitesmoke;
+  margin-top: 15px;width: auto;
+}
+
+ #btnhold{
+   padding: 5px;box-sizing: border-box;
+   
+ }
+ li{
+   text-decoration: none;display: inline-block;
+ }
+
+
+
+
+    </style>
+</head>
+
+<body>
+<!--
+<i class="fa fa-th"></i>--->
+<center><img src="https://cdn3.iconfinder.com/data/icons/utility-icons/50/Square-menu-512.png"class="newGrid">
+</center>
+<center><div class="newGridbtn"><u>Create New Grid And Choose Different Colours To Colour Each Grid Cell.</u></div></center><br><br>
+<center><button id="colour"> Choose Colour:</button>
+  <div id="btnhold">
+    
+
+   <ul>
+    <li id="btn1"class="btn">Gray</li>
+  <li id="btn2"class="btn">White</li>
+<li id="btn3"class="btn">Blue</li>
+</ul>
+  </div>
+  </center>
+<br>
+<center>
+<div id="container"></div><br>
+</center>
+<br><br>
+
+</body>
+
+</html>
